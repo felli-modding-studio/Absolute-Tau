@@ -22,6 +22,7 @@ local init = Game.init_game_object
 function Game:init_game_object()
 	local g = init(self)
 	g.tau_denominator = 150
+    g.tau_denominator_inc = 0 --in case other mods want to use it, abstau doesnt use by default
     g.tau_numerator = 1
 	return g
 end
