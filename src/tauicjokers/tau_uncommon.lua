@@ -472,3 +472,34 @@ AbsoluteTau.Tauic {
         end
     end
 }
+
+AbsoluteTau.Tauic {
+    original = { "j_merry_andy" },
+    key = "merry_andy",
+    loc_txt = {
+        name = "{C:tauic}Tauic Merry Andy{}",
+        text = {
+            "{C:red}+#1#{} Discard when discarding",
+            "Lose {C:attention}$#2#{} when discarding",
+        }
+    },
+
+    config = { extra = { discardgain = 1, moneyloss = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.discardgain,
+                card.ability.extra.moneyloss,
+            }
+        }
+    end,
+    soul_pos = { x = 4, y = 0 },
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.pre_discard then
+            ease_dollars(-card.ability.extra.moneyloss)
+            ease_discard(card.ability.extra.discardgain)
+
+        end
+    end
+}

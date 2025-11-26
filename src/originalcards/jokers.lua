@@ -4,7 +4,7 @@ SMODS.Joker {
         name = "Tauist",
         text = {
             "{C:tauic}Tauic{} Jokers are {X:tauic,C:white}X#1#{} more likely to spawn",
-            "Increase by {X:valk_tauic,C:white}X#2#{} at end of round",
+            "Increase by {X:tauic,C:white}X#2#{} at end of round",
         }
     },
     config = { extra = { mult = 1, gain = 0.25} },
