@@ -25,7 +25,7 @@ hex - apply Cosmic, R.G.B. or Lordly to a random joker, destroy all other jokers
 trance - add a Blue Seal to 3 selected cards in hand, if card already has a Blue Seal, upgrade it to an Galactic Seal
 medium - add a Purple Seal to 3 selected cards in hand, if card already has a Purple Seal, upgrade it to a Vibrant Seal
 cryptid - create 1 copy of each card held in hand, then randomly destroy half of the cards held in hand
-soul - create a random legendary joker from vallkarri
+soul - create a random legendary joker from 
 
 black hole:
 Level up all hands once, then double the level of the hand with the lowest level
@@ -129,14 +129,14 @@ local tauspecs = {
         end,
         use = function(self, card, area, copier)
             local cards = #G.hand.cards
-            SMODS.destroy_cards(vallkarri.get_cards(G.hand), false)
+            SMODS.destroy_cards(AbsoluteTau.get_cards(G.hand), false)
             for i = 1, cards do
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         SMODS.add_card({
                             set = "Enhanced",
                             edition = poll_edition("tau_familiar", nil, true, true),
-                            rank = vallkarri.poll_face("tau_familiar"),
+                            rank = pseudorandom_element({"Jack", "Queen", "King"}, "tau_familiar_face"),
                             area = G.hand,
                         })
                         return true
@@ -158,7 +158,7 @@ local tauspecs = {
         end,
         use = function(self, card, area, copier)
             local cards = #G.hand.cards
-            SMODS.destroy_cards(vallkarri.get_cards(G.hand), false)
+            SMODS.destroy_cards(AbsoluteTau.get_cards(G.hand), false)
             for i = 1, cards do
                 G.E_MANAGER:add_event(Event({
                     func = function()
@@ -187,14 +187,14 @@ local tauspecs = {
         end,
         use = function(self, card, area, copier)
             local cards = #G.hand.cards
-            SMODS.destroy_cards(vallkarri.get_cards(G.hand), false)
+            SMODS.destroy_cards(AbsoluteTau.get_cards(G.hand), false)
             for i = 1, cards do
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         SMODS.add_card({
                             set = "Enhanced",
                             edition = poll_edition("tau_incantation", nil, true, true),
-                            rank = vallkarri.poll_number("tau_incantation"),
+                            rank = pseudorandom("tau_incantation_number",2,10),
                             area = G.hand,
                         })
                         return true
@@ -763,6 +763,7 @@ local tauspecs = {
                 end
             }))
         end,
+        dependencies = {"Talisman"}
     },
     -- {
     --     original = "c_valk_succor",

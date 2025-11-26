@@ -1,5 +1,5 @@
 SMODS.Joker {
-    bases = {"j_joker"},
+    bases = { "j_joker" },
     key = "tau_joker",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Joker{}",
@@ -8,26 +8,26 @@ SMODS.Joker {
             "{C:inactive}(Includes self){}",
         }
     },
-    
-    config = { extra = { mult = 1.4444} },
+
+    config = { extra = { mult = 1.4444 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=0, y=1},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 1 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
         if (context.other_joker and context.other_joker.config.center.tauic) then
-            return {xmult = card.ability.extra.mult}
+            return { xmult = card.ability.extra.mult }
         end
     end
 }
 
 SMODS.Joker {
-    bases = {"j_chaos"},
+    bases = { "j_chaos" },
     key = "tau_clown",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Chaos the Clown{}",
@@ -37,15 +37,15 @@ SMODS.Joker {
             "{C:inactive}(Currently {C:attention}+#3#{} {C:blue}Hands{C:inactive} and {C:red}Discards{C:inactive})",
         }
     },
-    
-    config = { extra = { rerolls = 2, bonus = 1, current = 0} },
+
+    config = { extra = { rerolls = 2, bonus = 1, current = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.rerolls, card.ability.extra.bonus, card.ability.extra.current } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=1, y=1},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 1 },
     cost = 4,
     no_doe = true,
 
@@ -59,7 +59,6 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if (context.setting_blind) then
-
             ease_hands_played(card.ability.extra.bonus * card.ability.extra.current)
             ease_discard(card.ability.extra.bonus * card.ability.extra.current)
             card.ability.extra.current = 0
@@ -72,7 +71,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_lusty_joker", "j_greedy_joker", "j_wrathful_joker", "j_gluttenous_joker"},
+    bases = { "j_lusty_joker", "j_greedy_joker", "j_wrathful_joker", "j_gluttenous_joker" },
     key = "tau_sins",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Sin Joker{}",
@@ -82,28 +81,35 @@ SMODS.Joker {
             "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult, gaining on {V:1}#4#{C:inactive})",
         }
     },
-    
-    config = { extra = { base = 1, cur = 1, gain = 0.1, current_suit = "Spades"} },
+
+    config = { extra = { base = 1, cur = 1, gain = 0.1, current_suit = "Spades" } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.base, card.ability.extra.gain, card.ability.extra.cur, card.ability.extra.current_suit, colours = {
-            G.C.SUITS[card.ability.extra.current_suit]
-        } } }
+        return {
+            vars = {
+                card.ability.extra.base,
+                card.ability.extra.gain,
+                card.ability.extra.cur,
+                card.ability.extra.current_suit,
+                colours = {
+                    G.C.SUITS[card.ability.extra.current_suit]
+                }
+            }
+        }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=2, y=1},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 1 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
         if (context.individual and context.cardarea == G.play) then
             if context.other_card:is_suit(card.ability.extra.current_suit) then
-                card.ability.extra.cur = card.ability.extra.cur + card.ability.extra.gain
-                quick_card_speak(card, localize("k_upgrade_ex"))
+                SMODS.scale_card(card, {ref_table = card.ability.extra, ref_value = "cur", scalar_value = "gain"})
             else
                 card.ability.extra.cur = card.ability.extra.base
                 card.ability.extra.current_suit = context.other_card.base.suit
-                quick_card_speak(card, localize("k_reset_ex"))
+                SMODS.calculate_effect({message = localize("k_reset_ex")},card)
             end
 
             return {
@@ -114,7 +120,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_blue_joker"},
+    bases = { "j_blue_joker" },
     key = "tau_blue",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Blue Joker{}",
@@ -124,7 +130,7 @@ SMODS.Joker {
             "{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
         }
     },
-    
+
     config = { extra = { per = 1 } },
     loc_vars = function(self, info_queue, card)
         local n = 52
@@ -140,23 +146,21 @@ SMODS.Joker {
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=7, y=10},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 7, y = 10 },
     cost = 6,
     no_doe = true,
     calculate = function(self, card, context)
-        
         if context.joker_main then
             return {
                 xchips = card.ability.extra.per * #G.deck.cards
             }
         end
-
     end
 }
 
 SMODS.Joker {
-    bases = {"j_even_steven", "j_odd_todd"},
+    bases = { "j_even_steven", "j_odd_todd" },
     key = "tau_brothers",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Number Brothers{}",
@@ -165,31 +169,29 @@ SMODS.Joker {
             "Scored {C:attention}even-numbered{} ranks give {X:mult,C:white}X#1#{} Mult",
         }
     },
-    
+
     config = { extra = { mul = 2 } },
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.mul}}
+        return { vars = { card.ability.extra.mul } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=8, y=4},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 8, y = 4 },
     cost = 6,
     no_doe = true,
     calculate = function(self, card, context)
-        
         if context.individual and context.cardarea == G.play then
             return {
                 xmult = (context.other_card:get_id() % 2) == 0 and card.ability.extra.mul,
                 xchips = ((context.other_card:get_id() + 1) % 2) == 0 and card.ability.extra.mul,
             }
         end
-
     end
 }
 
 SMODS.Joker {
-    bases = {"j_egg"},
+    bases = { "j_egg" },
     key = "tau_egg",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Egg{}",
@@ -199,20 +201,20 @@ SMODS.Joker {
             "{C:attention}Doubles{} Sell Value gain at end of round",
         }
     },
-    
+
     config = { extra = { gain = 3, num = 3, den = 5 } },
     loc_vars = function(self, info_queue, card)
-        local num,den = SMODS.get_probability_vars(card, to_number(card.ability.extra.num), to_number(card.ability.extra.den))
+        local num, den = SMODS.get_probability_vars(card, to_number(card.ability.extra.num),
+            to_number(card.ability.extra.den))
         return { vars = { card.ability.extra.gain, num, den } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=0, y=10},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 10 },
     cost = 6,
     no_doe = true,
     calculate = function(self, card, context)
-        
         if context.end_of_round and context.main_eval then
             card.ability.extra_value = card.ability.extra_value + card.ability.extra.gain
             card.ability.extra.gain = card.ability.extra.gain * 2
@@ -222,17 +224,16 @@ SMODS.Joker {
                 colour = G.C.MONEY
             }
         end
-
     end,
     remove_from_deck = function(self, card, from_debuff)
         if (not from_debuff) and SMODS.pseudorandom_probability(card, "tau_egg", to_number(card.ability.extra.num), to_number(card.ability.extra.den)) then
-            SMODS.add_card({key = self.key})
-        end 
+            SMODS.add_card({ key = self.key })
+        end
     end
 }
 
 SMODS.Joker {
-    bases = {"j_mystic_summit"},
+    bases = { "j_mystic_summit" },
     key = "tau_summit",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Summit{}",
@@ -241,20 +242,18 @@ SMODS.Joker {
             "if all {C:red}Discards{} have been used",
         }
     },
-    
-    config = { extra = {  } },
-    loc_vars = function(self, info_queue, card)
 
-        return { vars = {  } }
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = {} }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=2, y=0},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 0 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
-        
         if context.after and G.GAME.current_round.discards_left <= 0 then
             vallkarri.simple_hand_text(context.scoring_name)
             update_hand_text({ sound = 'button', volume = 0.7, pitch = 1, delay = 1 }, { mult = "X2" })
@@ -263,16 +262,16 @@ SMODS.Joker {
             end
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 0, chips = 0, level = '', handname = ''})
+                    update_hand_text({ immediate = true, nopulse = true, delay = 0 },
+                        { mult = 0, chips = 0, level = '', handname = '' })
                 end
             }))
         end
-
     end
 }
 
 SMODS.Joker {
-    bases = {"j_banner"},
+    bases = { "j_banner" },
     key = "tau_banner",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Banner{}",
@@ -281,7 +280,7 @@ SMODS.Joker {
             "{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
         }
     },
-    
+
     config = { extra = { per = 3 } },
     loc_vars = function(self, info_queue, card)
         local d = 4
@@ -292,23 +291,19 @@ SMODS.Joker {
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=8, y=2},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 8, y = 2 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
-        
         if context.joker_main then
-
-            return {xchips = 1 + (card.ability.extra.per * G.GAME.current_round.discards_left)}
-
+            return { xchips = 1 + (card.ability.extra.per * G.GAME.current_round.discards_left) }
         end
-
     end
 }
 
 SMODS.Joker {
-    bases = {"j_credit_card"},
+    bases = { "j_credit_card" },
     key = "tau_creditcard",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Credit Card{}",
@@ -316,15 +311,15 @@ SMODS.Joker {
             "Refund {C:attention}#1#%{} of all money lost",
         }
     },
-    
-    config = { extra = {refund = 50} }, --value is pointless, it's always a 3/4 refund//not anymore!
+
+    config = { extra = { refund = 50 } }, --value is pointless, it's always a 3/4 refund//not anymore!
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.refund } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=9, y=0},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 9, y = 0 },
     cost = 4,
     no_doe = true,
     immutable = true, --fuck you
@@ -336,8 +331,8 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_jolly", "j_zany", "j_mad", "j_crazy" ,"j_droll",
-            "j_sly", "j_wily", "j_clever", "j_devious", "j_crafty"},
+    bases = { "j_jolly", "j_zany", "j_mad", "j_crazy", "j_droll",
+        "j_sly", "j_wily", "j_clever", "j_devious", "j_crafty" },
     key = "tau_emotion",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Emotional Joker{}",
@@ -346,25 +341,23 @@ SMODS.Joker {
             "per {C:attention}poker hand{} contained in played hand",
         }
     },
-    
-    config = { extra = { gain = 2} },
+
+    config = { extra = { gain = 2 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.gain } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=1, y=0},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 0 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        
         if (context.poker_hands) then
             local count = 0
-            
-            for i,hand in pairs(context.poker_hands) do
-                
+
+            for i, hand in pairs(context.poker_hands) do
                 if (hand and next(hand) ~= nil) then
                     -- print(hand)
                     count = count + 1
@@ -373,17 +366,16 @@ SMODS.Joker {
 
 
             if (context.joker_main) then
-                for i=1,count do
-                    SMODS.calculate_effect({xmult = card.ability.extra.gain, xchips = card.ability.extra.gain}, card)
+                for i = 1, count do
+                    SMODS.calculate_effect({ xmult = card.ability.extra.gain, xchips = card.ability.extra.gain }, card)
                 end
             end
         end
-
     end
 }
 
 SMODS.Joker {
-    bases = {"j_half"},
+    bases = { "j_half" },
     key = "tau_half",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Half Joker{}",
@@ -392,37 +384,34 @@ SMODS.Joker {
             "{C:attention}Doubles{} when you play {C:attention}#2#{} or less cards ",
         }
     },
-    
-    config = { extra = { mult = 20, req = 3 } },
+
+    config = { extra = { mult = 20, req = 3, two = 2 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.req } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=1, y=2},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 2 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
         if context.before and context.scoring_hand then
-
             if #context.scoring_hand <= card.ability.extra.req then
-                card.ability.extra.mult = card.ability.extra.mult * 2
-                quick_card_speak(card, localize("k_upgrade_ex"))
+                SMODS.scale_card(card, {ref_table = card.ability.extra, ref_value = "mult", scalar_value = "two", operation = "X"})
             end
-
         end
 
         if context.joker_main then
             return {
                 mult = card.ability.extra.mult
-            }   
+            }
         end
     end
 }
 
 SMODS.Joker {
-    bases = {"j_8_ball"},
+    bases = { "j_8_ball" },
     key = "tau_8_ball",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic 8 Ball{}",
@@ -431,28 +420,28 @@ SMODS.Joker {
             "with {C:attention}Octuple{} values",
         }
     },
-    
+
     config = { extra = { vmult = 8 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.vmult } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=0, y=5},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 5 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:get_id() == 8 and G.consumeables.config.card_count < G.consumeables.config.card_limit then
-            local tarot = SMODS.add_card({set = "Tarot"})
-            Cryptid.manipulate(tarot, {value = card.ability.extra.vmult})
+            local tarot = SMODS.add_card({ set = "Tarot" })
+            Cryptid.manipulate(tarot, { value = card.ability.extra.vmult })
         end
     end
 }
 
 SMODS.Joker {
-    bases = {"j_smiley"},
+    bases = { "j_smiley" },
     key = "tau_smiley",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Smiley Face{}",
@@ -461,36 +450,34 @@ SMODS.Joker {
             "{C:attention}Face{} cards give {X:mult,C:white}X#1#{} Mult",
         }
     },
-    
+
     config = { extra = { xmult = 1.5 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=6, y=15},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 6, y = 15 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            
             if not context.other_card:is_face() then
-                local faces = {"Jack", "King", "Queen"}
+                local faces = { "Jack", "King", "Queen" }
                 SMODS.change_base(context.other_card, nil, faces[pseudorandom("tau_smiley", 1, #faces)])
-            else    
+            else
                 return {
                     xmult = card.ability.extra.xmult,
                 }
             end
-
         end
     end
 }
 
 SMODS.Joker {
-    bases = {"j_gros_michel"},
+    bases = { "j_gros_michel" },
     key = "tau_gros_michel",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Gros Michel{}",
@@ -499,7 +486,7 @@ SMODS.Joker {
             "{C:green}#2# in #3#{} chance to convert into {C:tau_tau_colours}Tauic Cavendish{} at end of round",
         }
     },
-    
+
     config = { extra = { xmult = 15, outof = 15, num = 1 } },
     loc_vars = function(self, info_queue, card)
         local num, den = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.outof, 'tau_michel')
@@ -507,8 +494,8 @@ SMODS.Joker {
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=7, y=6},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 7, y = 6 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
@@ -526,7 +513,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_cavendish"},
+    bases = { "j_cavendish" },
     key = "tau_cavendish",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Cavendish{}",
@@ -535,16 +522,16 @@ SMODS.Joker {
             "{C:green}#2# in #3#{} chance to",
         }
     },
-    
+
     config = { extra = { emult = 3.33, outof = 1000 } },
     loc_vars = function(self, info_queue, card)
-        local n,d = SMODS.get_probability_vars(card, 1, card.ability.extra.outof)
-        return { vars = { card.ability.extra.emult, n,d } }
+        local n, d = SMODS.get_probability_vars(card, 1, card.ability.extra.outof)
+        return { vars = { card.ability.extra.emult, n, d } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=5, y=11},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 5, y = 11 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
@@ -558,7 +545,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_delayed_grat"},
+    bases = { "j_delayed_grat" },
     key = "tau_delayed_grat",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Delayed Gratification{}",
@@ -567,15 +554,15 @@ SMODS.Joker {
             "Earn {C:money}$#1#{} for every {C:red}#2#{} Discards left at end of round",
         }
     },
-    
+
     config = { extra = { dollar = 1, per = 10 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.dollar, card.ability.extra.per } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=4, y=3},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 3 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
@@ -589,7 +576,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_hanging_chad"},
+    bases = { "j_hanging_chad" },
     key = "tau_hanging_chad",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Hanging Chad{}",
@@ -597,15 +584,15 @@ SMODS.Joker {
             "Retrigger the {C:attention}first{} played card {C:attention}once{} for each card played",
         }
     },
-    
-    config = { extra = { } },
+
+    config = { extra = {} },
     loc_vars = function(self, info_queue, card)
-        return { vars = { } }
+        return { vars = {} }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=9, y=6},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 9, y = 6 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
@@ -614,14 +601,14 @@ SMODS.Joker {
             return {
                 repetitions = #G.play.cards,
                 message = localize("k_again_ex"),
-				card = card,
+                card = card,
             }
         end
     end
 }
 
 SMODS.Joker {
-    bases = {"j_misprint"},
+    bases = { "j_misprint" },
     key = "tau_misprint",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Misprint{}",
@@ -629,10 +616,23 @@ SMODS.Joker {
             "{X:dark_edition,C:white}#1##2#{}#3#",
         }
     },
-    
+
     immutable = true,
-    config = { extra = {min = 1.01, max = 9.99 } },
+    config = { extra = { min = 1.01, max = 9.99 } },
     loc_vars = function(self, info_queue, card)
+        local function corrupt_text(text, amount, available_chars)
+            local chars = (available_chars or "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[];:',.<>/?|")
+            -- amount is a 0-1 being a chance to replace each character with a rnd one
+
+            for i = 1, #text do
+                if math.random() < amount then
+                    local rand_index = math.random(1, #chars)
+                    local random_char = chars:sub(rand_index, rand_index)
+                    text = text:sub(1, i - 1) .. random_char .. text:sub(i + 1)
+                end
+            end
+            return text
+        end
         local text = corrupt_text("^", 0.2)
         local text1 = corrupt_text("xxx", 1, "01234567890123456789012345678901234567890123456789")
         local text2 = corrupt_text(" Mult", 0.2)
@@ -640,14 +640,15 @@ SMODS.Joker {
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=6, y=3},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 6, y = 3 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.joker_main then
-            local temp = (pseudorandom("tau_misprint") * (card.ability.extra.max - card.ability.extra.min)) + card.ability.extra.min
+            local temp = (pseudorandom("tau_misprint") * (card.ability.extra.max - card.ability.extra.min)) +
+            card.ability.extra.min
             return {
                 emult = temp
             }
@@ -657,7 +658,7 @@ SMODS.Joker {
 
 
 SMODS.Joker {
-    bases = {"j_photograph"},
+    bases = { "j_photograph" },
     key = "tau_photograph",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Photograph{}",
@@ -666,16 +667,16 @@ SMODS.Joker {
             "{X:dark_edition,C:white}^#1#{} Mult",
         }
     },
-    
+
     immutable = true,
     config = { extra = { amount = 1.1 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = {card.ability.extra.amount} }
+        return { vars = { card.ability.extra.amount } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=2, y=13},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 13 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
@@ -683,10 +684,12 @@ SMODS.Joker {
         if (context.individual and context.cardarea == G.play) then
             local first_face = nil
             for i = 1, #context.scoring_hand do
-                if context.scoring_hand[i]:is_face() then first_face = context.scoring_hand[i]; break end
+                if context.scoring_hand[i]:is_face() then
+                    first_face = context.scoring_hand[i]; break
+                end
             end
             if context.other_card == first_face then
-                return {emult = card.ability.extra.amount}
+                return { emult = card.ability.extra.amount }
             end
         end
     end,
@@ -694,7 +697,7 @@ SMODS.Joker {
 
 
 SMODS.Joker {
-    bases = {"j_ice_cream"},
+    bases = { "j_ice_cream" },
     key = "tau_ice_cream",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Ice Cream{}",
@@ -703,23 +706,22 @@ SMODS.Joker {
             "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)",
         }
     },
-    
+
     immutable = true,
-    config = { extra = {cur = 1, gain = 0.25 } },
+    config = { extra = { cur = 1, gain = 0.25 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = {card.ability.extra.cur, card.ability.extra.gain} }
+        return { vars = { card.ability.extra.cur, card.ability.extra.gain } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=4, y=10},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 10 },
     cost = 4,
     no_doe = true,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.after and context.main_eval then
-            card.ability.extra.cur = card.ability.extra.cur + card.ability.extra.gain
-            quick_card_speak(card, "Upgraded!")
+            SMODS.scale_card(card, {ref_table = card.ability.extra, ref_value = "cur", scalar_value = "gain"})
         end
 
         if context.joker_main then
@@ -731,7 +733,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_ride_the_bus"},
+    bases = { "j_ride_the_bus" },
     key = "tau_ride_the_bus",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Ride the Bus{}",
@@ -740,16 +742,16 @@ SMODS.Joker {
             "{X:mult,C:white}X#1#{} Mult when scored",
         }
     },
-    
-    config = { extra = {powmult = 1.4 } },
+
+    config = { extra = { powmult = 1.4 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = {card.ability.extra.powmult} }
+        return { vars = { card.ability.extra.powmult } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
     blueprint_compat = true,
-    pos = {x=0, y=0},
-    soul_pos = {x=1, y=6},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 6 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
@@ -762,7 +764,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    bases = {"j_raised_fist"},
+    bases = { "j_raised_fist" },
     key = "tau_raised_fist",
     loc_txt = {
         name = "{C:tau_tau_colours}Tauic Raised Fist{}",
@@ -772,16 +774,16 @@ SMODS.Joker {
             "{C:inactive,s:0.8}(Cannot go below {X:dark_edition,C:white,s:0.8}^1{s:0.8,C:inactive} Mult)",
         }
     },
-    
+
     config = { extra = { percent = 0.2 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = {card.ability.extra.percent} }
+        return { vars = { card.ability.extra.percent } }
     end,
     rarity = "valk_tauic",
     atlas = "tau",
     blueprint_compat = true,
-    pos = {x=0, y=0},
-    soul_pos = {x=8, y=3},
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 8, y = 3 },
     cost = 4,
     no_doe = true,
     calculate = function(self, card, context)
@@ -789,15 +791,15 @@ SMODS.Joker {
             -- code taken from original raised fist
             local nominal, card_id = 15, 15
             local raised_card = nil
-            for i=1, #G.hand.cards do
-                if card_id >= (G.hand.cards[i].base.id or math.huge) and not SMODS.has_no_rank(G.hand.cards[i]) then 
+            for i = 1, #G.hand.cards do
+                if card_id >= (G.hand.cards[i].base.id or math.huge) and not SMODS.has_no_rank(G.hand.cards[i]) then
                     nominal = G.hand.cards[i].base.nominal
                     card_id = G.hand.cards[i].base.id
                     raised_card = G.hand.cards[i]
                 end
             end
             if context.other_card == raised_card then
-                return {emult = math.max(nominal*card.ability.extra.percent,1)}
+                return { emult = math.max(nominal * card.ability.extra.percent, 1) }
             end
         end
     end

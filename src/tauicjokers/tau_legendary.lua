@@ -33,6 +33,7 @@ SMODS.Joker {
     end,
     is_tau = true,
     bases = {"j_caino"},
+    dependencies = {"Talisman"}
 }
 
 SMODS.Joker {
@@ -67,6 +68,7 @@ SMODS.Joker {
     end,
     is_tau = true,
     bases = {"j_triboulet"},
+    dependencies = {"Talisman"}
 }
 
 SMODS.Joker {
@@ -108,6 +110,7 @@ SMODS.Joker {
     end,
     is_tau = true,
     bases = {"j_yorick"},
+    dependencies = {"Talisman"}
 }
 
 SMODS.Joker {
@@ -144,7 +147,7 @@ SMODS.Joker {
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('ph_boss_disabled')})
             end
 
-            G.GAME.blind.chips = vallkarri.tetrate(to_big(G.GAME.blind.chips), 1 / card.ability.extra.antitetration)
+            G.GAME.blind.chips = to_big(G.GAME.blind.chips):tetrate(1 / card.ability.extra.antitetration)
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
             G.HUD_blind:recalculate()
 
@@ -153,6 +156,7 @@ SMODS.Joker {
     end,
     is_tau = true,
     bases = {"j_chicot"},
+    dependencies = {"Talisman"}
 }
 
 SMODS.Joker {
@@ -206,4 +210,5 @@ SMODS.Joker {
     end,
     is_tau = true,
     bases = {"j_perkeo"},
+    dependencies = {"Talisman"}
 }

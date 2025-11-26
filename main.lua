@@ -27,6 +27,14 @@ SMODS.Rarity {
     
 }
 
+function AbsoluteTau.get_cards(area)
+    local cards = {}
+    for _, card in pairs(area.cards) do
+        table.insert(cards, card)
+    end
+    return cards
+end
+
 AbsoluteTau.Tauic = SMODS.Joker:extend {
     tauic = true,
     required_params = {

@@ -585,8 +585,7 @@ SMODS.Joker {
         end
 
         if context.end_of_round and context.main_eval then
-            card.ability.extra.n = card.ability.extra.n + card.ability.extra.gain
-            quick_card_speak(card, localize("k_upgrade_ex"))
+            SMODS.scale_card(card, {ref_table = card.ability.extra, ref_value = "n", scalar_value = "gain"})
         end
 
     end

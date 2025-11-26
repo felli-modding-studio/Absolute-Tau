@@ -26,7 +26,7 @@ function create_card(...)
         local denominator = G.GAME.tau_denominator
         local numerator = G.GAME.tau_numerator
 
-        numerator, denominator = vallkarri.get_tau_probability_vars(out.config.center.key, numerator, denominator)
+        numerator, denominator = AbsoluteTau.get_probability_vars(out.config.center.key, numerator, denominator)
 
         local roll = (pseudorandom("roll_tauic") * (denominator - 1)) + 1
         if roll <= numerator then
