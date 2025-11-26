@@ -152,8 +152,7 @@ AbsoluteTau.Tauic {
     soul_pos = { x = 6, y = 6 },
     calculate = function(self, card, context)
         if context.using_consumeable then
-            level_all_hands(context.consumeable, card.ability.extra.levels)
-            card.ability.extra.levels = card.ability.extra.levels + card.ability.extra.inc
+            AbsoluteTau.level_all_hands(context.consumeable, card.ability.extra.levels)
         end
     end
 }
