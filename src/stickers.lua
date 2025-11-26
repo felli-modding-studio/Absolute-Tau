@@ -33,7 +33,7 @@ SMODS.Sticker {
             }
         }
     end,
-    badge_colour = HEX("523DBA"),,
+    badge_colour = HEX("523DBA"),
     atlas = "stickers",
     pos = {x=0,y=0},
 

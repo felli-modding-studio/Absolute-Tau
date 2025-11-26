@@ -1,77 +1,67 @@
-SMODS.Joker {
-    bases = {"j_obelisk"},
-    key = "tau_obelisk",
-    loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Obelisk{}",
-        text = {
-            "Gains {X:dark_edition,C:white}^#1#{} Mult per scored card if",
-            "played hand is not your most played {C:attention}poker hand{}",
-            "{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} Mult)",
-        }
-    },
-	
-    config = { extra = { gain = 0.2, current = 1 } },
-    loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.gain, card.ability.extra.current}}
-    end,
-    rarity = "valk_tauic",
-    atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=5, y=1},
-    cost = 4,
-    no_doe = true,
+AbsoluteTau.Tauic {
+	original = { "j_obelisk" },
+	loc_txt = {
+		name = "{C:tau_tau_colours}Tauic Obelisk{}",
+		text = {
+			"Gains {X:dark_edition,C:white}^#1#{} Mult per scored card if",
+			"played hand is not your most played {C:attention}poker hand{}",
+			"{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} Mult)",
+		}
+	},
 
-    calculate = function(self, card, context)
+	config = { extra = { gain = 0.2, current = 1 } },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.gain, card.ability.extra.current } }
+	end,
+	soul_pos = { x = 5, y = 1 },
 
-        if (context.before) then
-            local play_more_than = (G.GAME.hands[context.scoring_name].played or 0)
-            for k, v in pairs(G.GAME.hands) do
-                if k ~= context.scoring_name and v.played >= play_more_than and v.visible then
-                    card.ability.extra.current = card.ability.extra.current + card.ability.extra.gain
-                end
-            end
+	calculate = function(self, card, context)
+		if (context.before) then
+			local play_more_than = (G.GAME.hands[context.scoring_name].played or 0)
+			for k, v in pairs(G.GAME.hands) do
+				if k ~= context.scoring_name and v.played >= play_more_than and v.visible then
+					card.ability.extra.current = card.ability.extra.current + card.ability.extra.gain
+				end
+			end
+		end
 
-        end
-
-        if (context.joker_main) then
-            return {emult = card.ability.extra.current}
-        end
-
-    end
+		if (context.joker_main) then
+			return { emult = card.ability.extra.current }
+		end
+	end
 }
 
-SMODS.Joker {
-    bases = {"j_blueprint"},
-    key = "tau_blueprint",
-    loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Blueprint{}",
-        text = {
-            "Copies abilities the 3 {C:attention}Jokers{} to the right",
-        }
-    },
-	
-    blueprint_compat = true,
-    config = { extra = {} },
-    	loc_vars = function(self, info_queue, card)
+AbsoluteTau.Tauic {
+	original = { "j_blueprint" },
+	loc_txt = {
+		name = "{C:tau_tau_colours}Tauic Blueprint{}",
+		text = {
+			"Copies abilities the 3 {C:attention}Jokers{} to the right",
+		}
+	},
+
+	blueprint_compat = true,
+	config = { extra = {} },
+	loc_vars = function(self, info_queue, card)
 		if card.area and card.area == G.jokers then
 			local other_joker1
-            local other_joker2
-            local other_joker3
+			local other_joker2
+			local other_joker3
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then
 					other_joker1 = G.jokers.cards[i + 1]
-                    other_joker2 = G.jokers.cards[i + 2]
-                    other_joker3 = G.jokers.cards[i + 3]
+					other_joker2 = G.jokers.cards[i + 2]
+					other_joker3 = G.jokers.cards[i + 3]
 				end
 			end
 			local compatible1 = other_joker1 and other_joker1 ~= card and other_joker1.config.center.blueprint_compat
-            local compatible2 = other_joker2 and other_joker2 ~= card and other_joker2.config.center.blueprint_compat
-            local compatible3 = other_joker3 and other_joker3 ~= card and other_joker3.config.center.blueprint_compat
+			local compatible2 = other_joker2 and other_joker2 ~= card and other_joker2.config.center.blueprint_compat
+			local compatible3 = other_joker3 and other_joker3 ~= card and other_joker3.config.center.blueprint_compat
 			main_end = {
 				{
 					n = G.UIT.C,
 					config = { align = "bm", minh = 0.4 },
-					nodes ={
+					nodes = {
 						{
 							n = G.UIT.C,
 							config = {
@@ -97,10 +87,10 @@ SMODS.Joker {
 						},
 					},
 				},
-                {
+				{
 					n = G.UIT.C,
 					config = { align = "bm", minh = 0.4 },
-					nodes ={
+					nodes = {
 						{
 							n = G.UIT.C,
 							config = {
@@ -126,10 +116,10 @@ SMODS.Joker {
 						},
 					},
 				},
-                {
+				{
 					n = G.UIT.C,
 					config = { align = "bm", minh = 0.4 },
-					nodes ={
+					nodes = {
 						{
 							n = G.UIT.C,
 							config = {
@@ -161,21 +151,16 @@ SMODS.Joker {
 			main_end = main_end,
 		}
 	end,
-    rarity = "valk_tauic",
-    atlas = "tau",
-    pos = {x=0, y=0},
-    soul_pos = {x=0, y=3},
-    cost = 4,
-    no_doe = true,
+	soul_pos = { x = 0, y = 3 },
 
-    calculate = function(self, card, context)
+	calculate = function(self, card, context)
 		local my_ind = vallkarri.index(card)
-		local card_1,card_2,card_3 = G.jokers.cards[my_ind+1],G.jokers.cards[my_ind+2],G.jokers.cards[my_ind+3]
+		local card_1, card_2, card_3 = G.jokers.cards[my_ind + 1], G.jokers.cards[my_ind + 2], G.jokers.cards[my_ind + 3]
 
 		return SMODS.merge_effects({
 			SMODS.blueprint_effect(card, card_1, context),
 			SMODS.blueprint_effect(card, card_2, context),
 			SMODS.blueprint_effect(card, card_3, context),
-			})
-    end
+		})
+	end
 }
