@@ -28,6 +28,13 @@ SMODS.Atlas {
     py = 95,
 }
 
+SMODS.Atlas {
+    key = "modicon",
+    path = "modicon.png",
+    px = 34,
+    py = 34,
+}
+
 SMODS.Rarity {
     key = 'tauic',
     loc_txt = {
