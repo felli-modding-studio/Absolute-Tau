@@ -18,6 +18,14 @@ function AbsoluteTau.get_probability_vars(cen, num, den)
     return (amount and amount.numerator or num), (amount and amount.denominator or den)
 end
 
+local init = Game.init_game_object
+function Game:init_game_object()
+	local g = init(self)
+	g.tau_denominator = 150
+    g.tau_numerator = 1
+	return g
+end
+
 local fakecreate = create_card
 function create_card(...)
     local out = fakecreate(...)
