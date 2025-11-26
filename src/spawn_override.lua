@@ -54,7 +54,7 @@ end
 local ff = SMODS.four_fingers
 function SMODS.four_fingers(...)
     local original = ff(...)
-    if SMODS.find_card("j_tau_fingers") then    
+    if next(SMODS.find_card("j_tau_fingers")) then    
         return math.min(3, original) -- incase original was somehow smaller
     end
     return original
