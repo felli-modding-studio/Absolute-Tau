@@ -1,0 +1,15 @@
+{
+	"id": "tau",
+	"name": "Absolute Tau", 
+	"author": ["Lily Felli", "The VallKarri Discord Server"], 
+	"description": "The glorious 2pi, variants of many many cards",
+	"prefix": "tau",
+	"main_file": "main.lua",
+	"priority": 628, 
+	"badge_colour": "aa35ab",
+	"version": "0.0.0a", 
+	"dependencies": [ 
+		"Cryptlib",
+		"Steamodded (>=1.0.0~BETA-1014a)",
+	]
+}
