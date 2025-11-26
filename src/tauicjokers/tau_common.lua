@@ -1,9 +1,10 @@
 AbsoluteTau.Tauic {
     original = { "j_joker" },
+    key = "joker",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Joker{}",
+        name = "{C:tauic}Tauic Joker{}",
         text = {
-            "{X:mult,C:white}X#1#{} Mult for every {C:tau_tau_colours}Tauic{} Joker owned",
+            "{X:mult,C:white}X#1#{} Mult for every {C:tauic}Tauic{} Joker owned",
             "{C:inactive}(Includes self){}",
         }
     },
@@ -22,8 +23,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_chaos" },
+    key = "chaos",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Chaos the Clown{}",
+        name = "{C:tauic}Tauic Chaos the Clown{}",
         text = {
             "{C:attention}#1#{} free {C:green}rerolls{} in shop",
             "When blind selected, gain {C:attention}#2#{} {C:blue}hand{} and {C:red}discard{} per {C:green}reroll{} in last shop",
@@ -59,8 +61,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_lusty_joker", "j_greedy_joker", "j_wrathful_joker", "j_gluttenous_joker" },
+    key = "sin",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Sin Joker{}",
+        name = "{C:tauic}Tauic Sin Joker{}",
         text = {
             "{X:mult,C:white}X#1#{} Mult when a card is scored",
             "Increase by {X:mult,C:white}X#2#{} for every consecutive card of the same Suit scored",
@@ -102,8 +105,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_blue_joker" },
+    key = "blue",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Blue Joker{}",
+        name = "{C:tauic}Tauic Blue Joker{}",
         text = {
             "{X:chips,C:white}X#1#{} Chips for each",
             "remaining card in {C:attention}deck{}",
@@ -136,8 +140,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_even_steven", "j_odd_todd" },
+    key = "number",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Number Brothers{}",
+        name = "{C:tauic}Tauic Number Brothers{}",
         text = {
             "Scored {C:attention}odd-numbered{} ranks give {X:chips,C:white}X#1#{} Chips",
             "Scored {C:attention}even-numbered{} ranks give {X:mult,C:white}X#1#{} Mult",
@@ -161,8 +166,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_egg" },
+    key = "egg",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Egg{}",
+        name = "{C:tauic}Tauic Egg{}",
         text = {
             "Gains {C:money}$#1#{} of Sell Value at end of round",
             "{C:green}#2# in #3#{} Chance to come back after being removed",
@@ -197,8 +203,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_mystic_summit" },
+    key = "summit",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Summit{}",
+        name = "{C:tauic}Tauic Summit{}",
         text = {
             "{C:attention}Double{} Mult of played hand",
             "if all {C:red}Discards{} have been used",
@@ -229,8 +236,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_banner" },
+    key = "banner",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Banner{}",
+        name = "{C:tauic}Tauic Banner{}",
         text = {
             "{X:chips,C:white}X#1#{} Chips per discard remaining",
             "{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
@@ -255,8 +263,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_credit_card" },
+    key = "credit",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Credit Card{}",
+        name = "{C:tauic}Tauic Credit Card{}",
         text = {
             "Refund {C:attention}#1#%{} of all money lost",
         }
@@ -276,10 +285,10 @@ AbsoluteTau.Tauic {
 }
 
 AbsoluteTau.Tauic {
-    original = { "j_jolly", "j_zany", "j_mad", "j_crazy", "j_droll",
-        "j_sly", "j_wily", "j_clever", "j_devious", "j_crafty" },
+    original = { "j_jolly", "j_zany", "j_mad", "j_crazy", "j_droll", "j_sly", "j_wily", "j_clever", "j_devious", "j_crafty" },
+    key = "emotional",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Emotional Joker{}",
+        name = "{C:tauic}Tauic Emotional Joker{}",
         text = {
             "{X:chips,C:white}X#1#{} Chips and {X:mult,C:white}X#1#{} Mult",
             "per {C:attention}poker hand{} contained in played hand",
@@ -315,8 +324,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_half" },
+    key = "half",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Half Joker{}",
+        name = "{C:tauic}Tauic Half Joker{}",
         text = {
             "{C:mult}+#1#{} Mult",
             "{C:attention}Doubles{} when you play {C:attention}#2#{} or less cards ",
@@ -346,8 +356,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_8_ball" },
+    key = "8ball",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic 8 Ball{}",
+        name = "{C:tauic}Tauic 8 Ball{}",
         text = {
             "When an {C:attention}8{} is scored, create a random {C:tarot}Tarot{} card",
             "with {C:attention}Octuple{} values",
@@ -370,8 +381,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_smiley" },
-    loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Smiley Face{}",
+    key = "smiley"
+,    loc_txt = {
+        name = "{C:tauic}Tauic Smiley Face{}",
         text = {
             "{C:attention}Non-face{} cards are converted into a random {C:attention}face{} card when {C:attention}scored{}",
             "{C:attention}Face{} cards give {X:mult,C:white}X#1#{} Mult",
@@ -400,11 +412,12 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_gros_michel" },
+    key = "michel",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Gros Michel{}",
+        name = "{C:tauic}Tauic Gros Michel{}",
         text = {
             "{X:mult,C:white}X#1#{} Mult",
-            "{C:green}#2# in #3#{} chance to convert into {C:tau_tau_colours}Tauic Cavendish{} at end of round",
+            "{C:green}#2# in #3#{} chance to convert into {C:tauic}Tauic Cavendish{} at end of round",
         }
     },
 
@@ -430,8 +443,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_cavendish" },
+    key = "cavendish",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Cavendish{}",
+        name = "{C:tauic}Tauic Cavendish{}",
         text = {
             "{X:dark_edition,C:white}^#1#{} Mult",
             "{C:green}#2# in #3#{} chance to",
@@ -456,8 +470,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_delayed_grat" },
+    key = "gratification",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Delayed Gratification{}",
+        name = "{C:tauic}Tauic Delayed Gratification{}",
         text = {
             "Gain {C:money}current money{} as discards",
             "Earn {C:money}$#1#{} for every {C:red}#2#{} Discards left at end of round",
@@ -481,8 +496,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_hanging_chad" },
+    key = "chad",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Hanging Chad{}",
+        name = "{C:tauic}Tauic Hanging Chad{}",
         text = {
             "Retrigger the {C:attention}first{} played card {C:attention}once{} for each card played",
         }
@@ -507,8 +523,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_misprint" },
+    key = "misprint",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Misprint{}",
+        name = "{C:tauic}Tauic Misprint{}",
         text = {
             "{X:dark_edition,C:white}#1##2#{}#3#",
         }
@@ -551,8 +568,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_photograph" },
+    key = "photograph",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Photograph{}",
+        name = "{C:tauic}Tauic Photograph{}",
         text = {
             "The first scored {C:attention}face{} card gives",
             "{X:dark_edition,C:white}^#1#{} Mult",
@@ -584,8 +602,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_ice_cream" },
+    key = "icecream",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Ice Cream{}",
+        name = "{C:tauic}Tauic Ice Cream{}",
         text = {
             "Gains {X:chips,C:white}X#2#{} per hand played",
             "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)",
@@ -614,8 +633,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_ride_the_bus" },
+    key = "bus",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Ride the Bus{}",
+        name = "{C:tauic}Tauic Ride the Bus{}",
         text = {
             "{C:attention}Non-face{} cards give",
             "{X:mult,C:white}X#1#{} Mult when scored",
@@ -639,9 +659,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_raised_fist" },
-    key = "tau_raised_fist",
+    key = "fist",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Raised Fist{}",
+        name = "{C:tauic}Tauic Raised Fist{}",
         text = {
             "The lowest ranked card {C:attention}held in hand{} gives",
             "{X:dark_edition,C:white}^Mult{} equal to {C:attention}#1#x{} its value",

@@ -3,8 +3,8 @@ SMODS.Consumable {
     key = "absolutetau",
 
     cost = 25,
-    atlas = "main",
-    pos = {x=3, y=5},
+    atlas = "alt",
+    pos = {x=1, y=0},
     -- is_soul = true,
     soul_rate = 0.01,
     hidden = true,

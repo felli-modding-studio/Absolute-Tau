@@ -5,13 +5,13 @@ return {
                 name = "Tauic Variant",
                 text = {
                     "This card has a",
-                    "{C:tau_tau_colours}Tauic{} variant",
+                    "{C:tauic}Tauic{} variant",
                 }
             },
             tau_number = {
                 name = "Tau",
                 text = {
-                    "{C:tau_tau_colours,s:1.25}6.28318530718{}"
+                    "{C:tauic,s:1.25}6.28318530718{}"
                 }
             },
 
@@ -26,7 +26,7 @@ return {
             tau_transformative = {
                 name = "Transformative",
                 text = {
-                    "Converts into its {C:tau_tau_colours}Tauic{} variant",
+                    "Converts into its {C:tauic}Tauic{} variant",
                     "in {C:attention}#1#{} rounds",
                 }
             }

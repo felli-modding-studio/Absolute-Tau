@@ -1,6 +1,7 @@
 AbsoluteTau.Tauic {
+    key = "caino",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Canio{}",
+        name = "{C:tauic}Tauic Canio{}",
         text = {
             "{X:dark_edition,C:white}+^^#1#{} Mult when any card destroyed",
             "{C:inactive}Currently {X:dark_edition,C:white}^^#2#{C:inactive} Mult){}",
@@ -21,14 +22,14 @@ AbsoluteTau.Tauic {
             return { ee_mult = card.ability.extra.cur }
         end
     end,
-    is_tau = true,
     original = { "j_caino" },
     dependencies = { "Talisman" }
 }
 
 AbsoluteTau.Tauic {
+    key = "triboulet",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Triboulet{}",
+        name = "{C:tauic}Tauic Triboulet{}",
         text = {
             "{X:dark_edition,C:white}^^#1#{} Mult when any face card or Ace is scored",
             "Increases by {X:dark_edition,C:white}+^^#2#{} when any face card or Ace is scored",
@@ -46,14 +47,14 @@ AbsoluteTau.Tauic {
             return { eemult = card.ability.extra.cur }
         end
     end,
-    is_tau = true,
     original = { "j_triboulet" },
     dependencies = { "Talisman" }
 }
 
 AbsoluteTau.Tauic {
+    key = "yorick",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Yorick{}",
+        name = "{C:tauic}Tauic Yorick{}",
         text = {
             "This Joker gains {X:dark_edition,C:white}^^#2#{} mult",
             "for every card {C:attention}discarded",
@@ -78,14 +79,14 @@ AbsoluteTau.Tauic {
             return { eemult = card.ability.extra.cur }
         end
     end,
-    is_tau = true,
     original = { "j_yorick" },
     dependencies = { "Talisman" }
 }
 
 AbsoluteTau.Tauic {
+    key = "chicot",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Chicot{}",
+        name = "{C:tauic}Tauic Chicot{}",
         text = {
             "Disables effect of every {C:attention}Boss Blind{}",
             "{X:dark_edition,C:white}^^(1 / #1#){} blind size",
@@ -114,14 +115,14 @@ AbsoluteTau.Tauic {
             G.HUD_blind:recalculate()
         end
     end,
-    is_tau = true,
     original = { "j_chicot" },
     dependencies = { "Talisman" }
 }
 
 AbsoluteTau.Tauic {
+    key = "perkeo",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Perkeo{}",
+        name = "{C:tauic}Tauic Perkeo{}",
         text = {
             "Create {C:attention}#1#{} {C:dark_edition}Negative{} copies of the leftmost {C:attention}Consumable{} when exiting shop",
             "{C:green}#2# in #3#{} chance to make a copy of used {C:attention}Consumables{}",
@@ -153,7 +154,6 @@ AbsoluteTau.Tauic {
             G.consumeables:emplace(copy)
         end
     end,
-    is_tau = true,
     original = { "j_perkeo" },
     dependencies = { "Talisman" }
 }

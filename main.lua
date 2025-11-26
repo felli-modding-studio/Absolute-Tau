@@ -10,9 +10,20 @@ AbsoluteTau.gradient = SMODS.Gradient {
     cycle = 10
 }
 
+loc_colour()
+
+G.ARGS.LOC_COLOURS.tauic = AbsoluteTau.gradient
+
 SMODS.Atlas {
     key = "tau",
     path = "tauic_jokers.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas {
+    key = "alt",
+    path = "cards.png",
     px = 71,
     py = 95,
 }
@@ -27,45 +38,34 @@ SMODS.Rarity {
 
 }
 
-function AbsoluteTau.get_cards(area)
-    local cards = {}
-    for _, card in pairs(area.cards) do
-        table.insert(cards, card)
-    end
-    return cards
-end
-
 AbsoluteTau.Tauic = SMODS.Joker:extend {
     tauic = true,
     required_params = {
         "original"
     },
     inject = function(self, i)
-        local okey = nil
         if type(self.original) == "table" then
-            okey = self.original[1]
             for _, value in pairs(self.original) do
                 G.P_CENTERS[value].tauic_variant = self.key
             end
         elseif type(self.original) == "string" then
-            okey = self.original
             G.P_CENTERS[self.original].tauic_variant = self.key
         else
             error("What the fuck are you doing bro 👀👀👀👀👀👀👀👀👀👀👀👀👀👀")
         end
-        self.key = "tauic_" .. okey
+        print(self.atlas)
         SMODS.Joker.inject(self)
     end,
     no_doe = true,
     pos = { x = 0, y = 0 },
-    atlas = "tau",
+    atlas = "tau_tau",
     rarity = "tau_tauic",
     cost = 15,
-    key = "taucard"
 }
 
 local files = {
     "src/spawn_override.lua",
+    "src/helpers.lua",
     "src/decks.lua",
     "src/seals.lua",
     "src/spectrals.lua",

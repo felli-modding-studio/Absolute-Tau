@@ -1,7 +1,8 @@
 AbsoluteTau.Tauic {
     original = { "j_rocket" },
+    key = "rocket",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Rocket{}",
+        name = "{C:tauic}Tauic Rocket{}",
         text = {
             "Earn {C:money}$#1#{} at end of round",
             "Multiply dollars earned by {X:money,C:white}$X#2#{} when {C:attention}Boss Blind{} defeated",
@@ -27,8 +28,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_loyalty_card" },
+    key = "loyalty",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Loyalty Card{}",
+        name = "{C:tauic}Tauic Loyalty Card{}",
         text = {
             "{C:attention}Triple{} this Jokers {{X:mult,C:white}XMult{} every {C:attention}#1#{} {C:inactive}[#2#]{} hands played",
             "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
@@ -58,8 +60,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_marble" },
+    key = "marble",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Marble Joker{}",
+        name = "{C:tauic}Tauic Marble Joker{}",
         text = {
             "First scoring card is converted into a {C:attention}Stone{} card",
             "{C:attention}Stone{} cards give {X:chips,C:white}X#1#{} Chips when scored",
@@ -97,8 +100,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_stencil" },
+    key = "stencil",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Joker Stencil{}",
+        name = "{C:tauic}Tauic Joker Stencil{}",
         text = {
             "{C:attention}+#1#{} Joker Slots",
             "At end of round, gains {C:attention}+#2#{} Joker Slot",
@@ -132,8 +136,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_four_fingers" },
+    key = "fingers",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Four Fingers{}",
+        name = "{C:tauic}Tauic Four Fingers{}",
         text = {
             "{C:attention}Flushes{} and {C:attention}Straights{} can be made with {C:attention}3{} cards", --booo hardcoding. whatever. go complain to smods. --i will! not! . its fine here
             "Level up all hands by {C:attention}#1#{} when consumable used",
@@ -155,8 +160,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_ceremonial" },
+    key = "dagger",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Ceremonial Dagger{}",
+        name = "{C:tauic}Tauic Ceremonial Dagger{}",
         text = {
             "When {C:attention}blind{} selected, {C:red,E:1}destroy{} Joker to the right and",
             "add {C:attention}one tenth{} of its sell value to this Jokers {X:dark_edition,C:white}^Mult{}",
@@ -206,8 +212,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_troubadour" },
+    key = "troubadour",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Troubadour{}",
+        name = "{C:tauic}Tauic Troubadour{}",
         text = {
             "{C:attention}+#1#{} hand size when card scored",
             "Convert every {C:attention}#3#{} Hand Size beyond {C:attention}#2#{} to {C:attention}#1#{} Consumable Slot",
@@ -248,8 +255,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_oops" },
+    key = "oops",
     loc_txt = {
-        name = "{C:tau_tau_colours}Oops! All six point two eights!{}",
+        name = "{C:tauic}Oops! All six point two eights!{}",
         text = {
             "Multiplies all {C:attention}listed{} {C:green}probabilities{} by {C:attention}Tau{}",
             "{C:green}#1# in #2#{} chance to earn {C:dark_edition}+#3#{} Joker slot and {C:money}$#4#{} when {C:attention}consumable{} used",
@@ -273,20 +281,15 @@ AbsoluteTau.Tauic {
             G.jokers:change_size(card.ability.extra.slots)
             ease_dollars(card.ability.extra.money)
         end
-
-
-
-        -- select(2,next(G.consumeables.cards))
     end,
 
 }
 
---CONTINUE FROM HERE
-
 AbsoluteTau.Tauic {
     original = { "j_satellite" },
+    key = "satellite",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Satellite{}",
+        name = "{C:tauic}Tauic Satellite{}",
         text = {
             "Earn {C:money}$#1#{} at end of round",
             "Increases by {C:money}$#2#{} when planet card used",
@@ -320,8 +323,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_cartomancer" },
+    key = "cartomancer",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Cartomancer{}",
+        name = "{C:tauic}Tauic Cartomancer{}",
         text = {
             "{C:green}#1# in #2#{} chance to create a {C:dark_edition}Negative{} {C:tarot}Tarot{} card",
             "when a {C:attention}Consumable{} is used",
@@ -344,8 +348,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_mime" },
+    key = "mime",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Mime{}",
+        name = "{C:tauic}Tauic Mime{}",
         text = {
             "Retrigger all playing cards {C:attention}#1#{} times",
         }
@@ -371,8 +376,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_steel_joker" },
+    key = "steel",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Steel Joker{}",
+        name = "{C:tauic}Tauic Steel Joker{}",
         text = {
             "{X:dark_edition,C:white}+^#1#{} Mult for each {C:attention}Steel card{} in deck",
             "{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} Mult)",
@@ -384,14 +390,14 @@ AbsoluteTau.Tauic {
         info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
 
 
-        return { vars = { card.ability.extra.gain, 1 + (card.ability.extra.gain * enhanced_in_deck("m_steel")) } }
+        return { vars = { card.ability.extra.gain, 1 + (card.ability.extra.gain * AbsoluteTau.enhanced_in_deck("m_steel")) } }
     end,
     soul_pos = { x = 7, y = 3 },
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                emult = 1 + (card.ability.extra.gain * enhanced_in_deck("m_steel"))
+                emult = 1 + (card.ability.extra.gain * AbsoluteTau.enhanced_in_deck("m_steel"))
             }
         end
     end
@@ -399,8 +405,9 @@ AbsoluteTau.Tauic {
 
 AbsoluteTau.Tauic {
     original = { "j_dusk" },
+    key = "dusk",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Dusk{}",
+        name = "{C:tauic}Tauic Dusk{}",
         text = {
             "{C:attention}Retrigger{} each played card {C:attention}once{}",
             "for each hand played this round",
@@ -434,8 +441,9 @@ end
 
 AbsoluteTau.Tauic {
     original = { "j_fibonacci" },
+    key = "fibonacci",
     loc_txt = {
-        name = "{C:tau_tau_colours}Tauic Fibonacci{}",
+        name = "{C:tauic}Tauic Fibonacci{}",
         text = {
             "Playing cards give {C:mult}Mult{} equal to the {C:attention}Nth Fibonacci number{}",
             "Increase N by {C:attention}#1#{} at end of round",

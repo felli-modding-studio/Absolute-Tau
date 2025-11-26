@@ -1,10 +1,17 @@
+SMODS.Atlas {
+    key = "decks",
+    path = "decks.png",
+    px = 71,
+    py = 95,
+}
+
 SMODS.Back {
     key = "tauic",
     loc_txt = {
         name = "Tauic Deck",
         text = {
-            "{C:tau_tau_colours}Tauic{} Jokers are {C:attention}thrice{} as common",
-            "for each {C:tau_tau_colours}non-Tauic{} Joker owned",
+            "{C:tauic}Tauic{} Jokers are {C:attention}thrice{} as common",
+            "for each {C:tauic}non-Tauic{} Joker owned",
             -- "{C:attention}X3{} Blind Size",
         }
     },
@@ -32,7 +39,8 @@ if CardSleeves then
         loc_txt = {
             name = "Tauic Sleeve",
             text = {
-                "{C:cry_ember}Tauic{} Jokers are {C:attention}exponentially{} more common",
+                "{C:cry_ember}Tauic{} Jokers are",
+                "{C:attention}exponentially{} more common",
                 -- "{C:attention}X3{} Blind Size",
             }
         },

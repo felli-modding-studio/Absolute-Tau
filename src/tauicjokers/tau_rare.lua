@@ -1,7 +1,8 @@
 AbsoluteTau.Tauic {
 	original = { "j_obelisk" },
+	key = "obelisk",
 	loc_txt = {
-		name = "{C:tau_tau_colours}Tauic Obelisk{}",
+		name = "{C:tauic}Tauic Obelisk{}",
 		text = {
 			"Gains {X:dark_edition,C:white}^#1#{} Mult per scored card if",
 			"played hand is not your most played {C:attention}poker hand{}",
@@ -28,13 +29,14 @@ AbsoluteTau.Tauic {
 		if (context.joker_main) then
 			return { emult = card.ability.extra.current }
 		end
-	end
+	end,
 }
 
 AbsoluteTau.Tauic {
 	original = { "j_blueprint" },
+	key = "blueprint",
 	loc_txt = {
-		name = "{C:tau_tau_colours}Tauic Blueprint{}",
+		name = "{C:tauic}Tauic Blueprint{}",
 		text = {
 			"Copies abilities the 3 {C:attention}Jokers{} to the right",
 		}

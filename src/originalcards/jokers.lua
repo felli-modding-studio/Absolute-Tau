@@ -3,7 +3,7 @@ SMODS.Joker {
     loc_txt = {
         name = "Tauist",
         text = {
-            "{C:tau_tau_colours}Tauic{} Jokers are {X:tau_tau_colours,C:white}X#1#{} more likely to spawn",
+            "{C:tauic}Tauic{} Jokers are {X:tauic,C:white}X#1#{} more likely to spawn",
             "Increase by {X:valk_tauic,C:white}X#2#{} at end of round",
         }
     },
@@ -12,9 +12,9 @@ SMODS.Joker {
         return { vars = { card.ability.extra.mult, card.ability.extra.gain } }
     end,
     rarity = 3,
-    atlas = "main",
-    pos = {x=8, y=4},
-    soul_pos = {x=8, y=8, extra = {x=9, y=4}},
+    atlas = "alt",
+    pos = {x=0, y=0},
+    soul_pos = {x=0, y=2, extra = {x=0, y=1}},
     cost = 12,
     calculate = function(self, card, context)
         if context.tau_probability_mod then
