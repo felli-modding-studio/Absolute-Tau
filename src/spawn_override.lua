@@ -24,7 +24,8 @@ function Game:start_run(args)
     if args.savetext then
         return
     end
-	self.GAME.tau_denominator = 150
+    self.GAME.base_tau_denominator = 150 
+	self.GAME.tau_denominator = self.GAME.base_tau_denominator
     self.GAME.tau_denominator_inc = 0 --in case other mods want to use it, abstau doesnt use by default
     self.GAME.tau_numerator = 1
 end
