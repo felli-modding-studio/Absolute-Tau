@@ -698,29 +698,26 @@ AbsoluteTau.Tauic {
     original = { "j_juggler" },
     key = "juggler",
     loc_txt = {
-        name = "{C:tauic}Tauic Merry Andy{}",
+        name = "{C:tauic}Tauic Juggler{}",
         text = {
-            "{C:red}+#1#{} Discard when discarding",
-            "Lose {C:attention}$#2#{} when discarding",
+            "At end of round, {C:attention}+#1#{} Hand Size for",
+            "each {C:attention}Consumable{} owned"
         }
     },
 
-    config = { extra = { discardgain = 1, moneyloss = 1 } },
+    config = { extra = { handsize = 0.5, } },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.discardgain,
-                card.ability.extra.moneyloss,
+                card.ability.extra.handsize
             }
         }
     end,
-    soul_pos = { x = 4, y = 0 },
+    soul_pos = { x = 5, y = 0 },
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.pre_discard then
-            ease_dollars(-card.ability.extra.moneyloss)
-            ease_discard(card.ability.extra.discardgain)
-
+        if context.end_of_round and context.main_eval then
+            G.hand:change_size(#G.consumeables.cards * card.ability.extra.handsize)
         end
     end
 }
