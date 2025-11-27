@@ -60,7 +60,6 @@ AbsoluteTau.Tauic = SMODS.Joker:extend {
         else
             error("What the fuck are you doing bro 👀👀👀👀👀👀👀👀👀👀👀👀👀👀")
         end
-        print(self.atlas)
         SMODS.Joker.inject(self)
     end,
     no_doe = true,

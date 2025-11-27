@@ -156,7 +156,12 @@ AbsoluteTau.Tauic {
 	soul_pos = { x = 0, y = 3 },
 
 	calculate = function(self, card, context)
-		local my_ind = vallkarri.index(card)
+		local my_ind = nil
+		for i,joker in ipairs(card.area.cards) do
+			if joker == card then
+				my_ind = i
+			end
+		end
 		local card_1, card_2, card_3 = G.jokers.cards[my_ind + 1], G.jokers.cards[my_ind + 2], G.jokers.cards[my_ind + 3]
 
 		return SMODS.merge_effects({

@@ -219,7 +219,7 @@ AbsoluteTau.Tauic {
     soul_pos = { x = 2, y = 0 },
     calculate = function(self, card, context)
         if context.after and G.GAME.current_round.discards_left <= 0 then
-            vallkarri.simple_hand_text(context.scoring_name)
+            update_hand_text({ sound = 'button', volume = 0.7, pitch = 1, delay = 1 }, { handname = localize("k_all_hands") })
             update_hand_text({ sound = 'button', volume = 0.7, pitch = 1, delay = 1 }, { mult = "X2" })
             if G.GAME.hands[context.scoring_name] then
                 G.GAME.hands[context.scoring_name].mult = G.GAME.hands[context.scoring_name].mult * 2
